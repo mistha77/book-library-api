@@ -98,7 +98,7 @@ A ready-to-use Postman collection is included:
 
 ## 👩‍💻 Author
 
-* Your Name
+* Mistha v
 
 ---
 

@@ -49,7 +49,7 @@ app.put('/books/:id', (req, res) => {
     const change = all.find(t => t.id === parseInt(req.params.id));
     if (!change) return res.status(404).send('task not found');
 
-    change.title = req.body.title || all.title;
+    change.title = req.body.title || change.title;
     change.available = req.body.available !== undefined ? req.body.available : change.available;
 
     res.json(change);
@@ -81,6 +81,13 @@ app.post('/borrow', (req, res) => {
             message: "Book not found"
         });
     }
+    if (!book.available) {
+        return res.status(400).json({
+            message: "Book already borrowed"
+        });
+    }
+
+
 
     res.json({
         message: "Book borrowed successfully",
